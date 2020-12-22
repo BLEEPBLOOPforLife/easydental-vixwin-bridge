@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net45</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Authors>Brian Mak</Authors>
+		<Company />
+		<Product>EasyDental VixWin Bridge</Product>
+		<Copyright>Copyright (c) 2020 Brian Mak. All rights reserved.</Copyright>
+		<ApplicationIcon>tray_icon.ico</ApplicationIcon>
+		<PackageId>EasyDentalVixWinBridge</PackageId>
+		<Description>EasyDental VixWin Bridge</Description>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="System.Windows" />
+		<Reference Include="System.Windows.Forms" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="LICENSE.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="README.md">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="tray_icon.ico">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>
