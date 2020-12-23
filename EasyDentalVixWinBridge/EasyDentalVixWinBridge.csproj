@@ -6,11 +6,11 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<Authors>Brian Mak</Authors>
 		<Company />
-		<Product>EasyDental VixWin Bridge</Product>
+		<Product>Easy Dental VixWin Bridge</Product>
 		<Copyright>Copyright (c) 2020 Brian Mak. All rights reserved.</Copyright>
 		<ApplicationIcon>tray_icon.ico</ApplicationIcon>
 		<PackageId>EasyDentalVixWinBridge</PackageId>
-		<Description>EasyDental VixWin Bridge</Description>
+		<Description>Easy Dental VixWin Bridge</Description>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
