@@ -50,7 +50,7 @@ namespace EasyDentalVixWinBridge
 		}
 
 		/// <summary>
-		/// Opens VixWin with a patient ID from the UI.
+		/// Opens VixWin with an Easy Dental patient ID from the UI.
 		/// </summary>
 		private void OpenVixWinWithPatientFromUI( )
 		{
