@@ -27,9 +27,18 @@ namespace EasyDentalVixWinBridge
 		}
 
 		/// <summary>
-		/// Gets the ID of the patient that is currently open in Easy Dental. Throws an <see cref="InvalidOperationException"/> if Easy Dental is not open, Easy Dental is not installed, or an incompatible Easy Dental version is installed. If the patient ID is 0, no patient is selected.
+		/// Gets the name of the patient that is currently open in Easy Dental. Throws an <see cref="InvalidOperationException"/> if Easy Dental is not installed or an incompatible Easy Dental version is installed. If the patient's name is an empty string, no patient is selected or Easy Dental is not open.
 		/// </summary>
-		/// <returns>The ID of the patient that is currently open in Easy Dental. If the patient ID is 0, no patient is selected.</returns>
+		/// <returns>The name of the patient that is currently open in Easy Dental. If the patient's name is an empty string, no patient is selected or Easy Dental is not open.</returns>
+		public static string GetEasyDentalPatientName( )
+		{
+			throw new NotImplementedException( );
+		}
+
+		/// <summary>
+		/// Gets the ID of the patient that is currently open in Easy Dental. Throws an <see cref="InvalidOperationException"/> if Easy Dental is not installed or an incompatible Easy Dental version is installed. If the patient ID is 0, no patient is selected or Easy Dental is not open.
+		/// </summary>
+		/// <returns>The ID of the patient that is currently open in Easy Dental. If the patient ID is 0, no patient is selected or Easy Dental is not open.</returns>
 		public static int GetEasyDentalPatientID( )
 		{
 			RegistryKey patientIdRegistryKey = Registry.CurrentUser.OpenSubKey( patientIdRegistryKeyPath );
@@ -41,7 +50,9 @@ namespace EasyDentalVixWinBridge
 
 			if ( !IsEasyDentalOpen( ) )
 			{
-				throw new InvalidOperationException( "Easy Dental is not open." );
+				patientIdRegistryKey.Close( );
+
+				return 0;
 			}
 
 			int patientId = ( int ) patientIdRegistryKey.GetValue( patientIdRegistryValueName );
