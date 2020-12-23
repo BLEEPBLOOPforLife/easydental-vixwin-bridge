@@ -41,10 +41,10 @@ namespace EasyDentalVixWinBridge
 			{
 				if ( eventArgs.Button == MouseButtons.Left )
 				{
-					OpenVixWinWithPatientFromUI( );
+					OpenVixWinWithPatientFromUi( );
 				} else if ( eventArgs.Button == MouseButtons.Right )
 				{
-					UpdateCurrentPatientInUI( );
+					UpdateCurrentPatientInUi( );
 				}
 			};
 		}
@@ -52,7 +52,7 @@ namespace EasyDentalVixWinBridge
 		/// <summary>
 		/// Opens VixWin with an Easy Dental patient ID from the UI.
 		/// </summary>
-		private void OpenVixWinWithPatientFromUI( )
+		private void OpenVixWinWithPatientFromUi( )
 		{
 			int patientId = EasyDentalVixWinHelper.GetEasyDentalSelectedPatientId( );
 
@@ -68,7 +68,7 @@ namespace EasyDentalVixWinBridge
 		/// <summary>
 		/// Updates the current patient in the tray icon menu.
 		/// </summary>
-		private void UpdateCurrentPatientInUI( )
+		private void UpdateCurrentPatientInUi( )
 		{
 			string selectedPatientName = "None";
 			string selectedPatientId = "None";
