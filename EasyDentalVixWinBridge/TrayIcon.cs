@@ -54,9 +54,15 @@ namespace EasyDentalVixWinBridge
 		/// </summary>
 		private void OpenVixWinWithPatientFromUI( )
 		{
-			// TODO: Use EasyDentalVixWinHelper to open VixWin with patient ID.
+			int patientId = EasyDentalVixWinHelper.GetEasyDentalSelectedPatientId( );
 
-			throw new NotImplementedException( );
+			if ( patientId != 0 )
+			{
+				EasyDentalVixWinHelper.OpenVixWinWithEasyDentalPatient( patientId );
+			} else
+			{
+				MessageBox.Show( "There is no patient currently selected in Easy Dental.", "No Patient Selected", MessageBoxButtons.OK, MessageBoxIcon.Error );
+			}
 		}
 
 		/// <summary>
@@ -70,17 +76,15 @@ namespace EasyDentalVixWinBridge
 			try
 			{
 				int patientId = EasyDentalVixWinHelper.GetEasyDentalSelectedPatientId( );
-				selectedPatientName = EasyDentalVixWinHelper.GetEasyDentalPatientNameFromId( patientId );
-				selectedPatientId = patientId.ToString( );
+
+				if ( patientId != 0 )
+				{
+					selectedPatientName = EasyDentalVixWinHelper.GetEasyDentalPatientNameFromId( patientId );
+					selectedPatientId = patientId.ToString( );
+				}
 			} catch ( InvalidOperationException e )
 			{
 				MessageBox.Show( e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error ); // Easy Dental is not installed or an incompatible version is installed.
-			}
-
-			if ( string.IsNullOrEmpty( selectedPatientName ) )
-			{
-				selectedPatientName = "None";
-				selectedPatientId = "None";
 			}
 
 			notifyIcon.ContextMenuStrip.Items[ 2 ].Text = "Selected Patient Name: " + selectedPatientName;
