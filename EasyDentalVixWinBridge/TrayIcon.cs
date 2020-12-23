@@ -41,7 +41,7 @@ namespace EasyDentalVixWinBridge
 			{
 				if ( eventArgs.Button == MouseButtons.Left )
 				{
-					//throw new NotImplementedException( ); // TODO: Open VixWin with the proper flags. Create helper method in EasyDentalVixWinHelper to do this.
+					throw new NotImplementedException( ); // TODO: Open VixWin with the proper flags. Create helper method in EasyDentalVixWinHelper to do this.
 				} else if ( eventArgs.Button == MouseButtons.Right )
 				{
 					UpdateCurrentPatientInUI( );
