@@ -18,7 +18,7 @@ namespace EasyDentalVixWinBridge
 		{
 			notifyIcon = new NotifyIcon( );
 			notifyIcon.Icon = new Icon( AppDomain.CurrentDomain.BaseDirectory + "tray_icon.ico" );
-			notifyIcon.Text = "EasyDental VixWin Bridge";
+			notifyIcon.Text = "Easy Dental VixWin Bridge";
 			notifyIcon.ContextMenuStrip = new ContextMenuStrip( );
 			notifyIcon.Visible = true;
 			PopulateTrayIconMenu( );

@@ -1,5 +1,5 @@
-# EasyDental VixWin Bridge
-A program used to integrate EasyDental with VixWin better. The current VxLink version seems to be prone to bugs/crashes, so this is designed as a replacement for it.
+# Easy Dental VixWin Bridge
+A program used to integrate Easy Dental with VixWin better. The current VxLink version seems to be prone to bugs/crashes, so this is designed as a replacement for it.
 
 ## Donate
 
@@ -15,7 +15,7 @@ To download binaries for this program, go [here](https://github.com/BLEEPBLOOPfo
 
 1. Run the installer.
 
-2. Click the "EZ/VX" icon in the tray when you have a patient open in EasyDental to open VixWin.
+2. Click the "EZ/VX" icon in the tray when you have a patient open in Easy Dental to open VixWin.
 
 ## Notes
 
