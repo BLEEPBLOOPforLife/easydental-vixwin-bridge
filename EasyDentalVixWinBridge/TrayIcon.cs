@@ -41,12 +41,22 @@ namespace EasyDentalVixWinBridge
 			{
 				if ( eventArgs.Button == MouseButtons.Left )
 				{
-					throw new NotImplementedException( ); // TODO: Open VixWin with the proper flags. Create helper method in EasyDentalVixWinHelper to do this.
+					OpenVixWinWithPatientFromUI( );
 				} else if ( eventArgs.Button == MouseButtons.Right )
 				{
 					UpdateCurrentPatientInUI( );
 				}
 			};
+		}
+
+		/// <summary>
+		/// Opens VixWin with a patient ID from the UI.
+		/// </summary>
+		private void OpenVixWinWithPatientFromUI( )
+		{
+			// TODO: Use EasyDentalVixWinHelper to open VixWin with patient ID.
+
+			throw new NotImplementedException( );
 		}
 
 		/// <summary>
@@ -59,8 +69,9 @@ namespace EasyDentalVixWinBridge
 
 			try
 			{
-				selectedPatientName = EasyDentalVixWinHelper.GetEasyDentalPatientName( );
-				selectedPatientId = EasyDentalVixWinHelper.GetEasyDentalPatientID( ).ToString( );
+				int patientId = EasyDentalVixWinHelper.GetEasyDentalSelectedPatientId( );
+				selectedPatientName = EasyDentalVixWinHelper.GetEasyDentalPatientNameFromId( patientId );
+				selectedPatientId = patientId.ToString( );
 			} catch ( InvalidOperationException e )
 			{
 				MessageBox.Show( e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error ); // Easy Dental is not installed or an incompatible version is installed.
@@ -80,7 +91,7 @@ namespace EasyDentalVixWinBridge
 		/// Exits the application from the tray exit button.
 		/// </summary>
 		/// <param name="sender">The event sender.</param>
-		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		/// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
 		private void Exit( object sender, EventArgs e )
 		{
 			DialogResult toExit = MessageBox.Show( "Are you sure you want to exit?", "Exit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question );

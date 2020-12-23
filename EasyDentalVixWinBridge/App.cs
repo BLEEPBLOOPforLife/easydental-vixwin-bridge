@@ -8,7 +8,7 @@ namespace EasyDentalVixWinBridge
 	internal class App : ApplicationContext
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="App"/> class.
+		/// Initializes a new instance of the <see cref="App" /> class.
 		/// </summary>
 		internal App( )
 		{
