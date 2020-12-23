@@ -73,7 +73,7 @@ namespace EasyDentalVixWinBridge
 				throw new ArgumentException( "Invalid patient ID" );
 			}
 
-			// TODO: Check if EasyDental is installed. Get name from ID.
+			// TODO: Check if EasyDental is installed and throw InvalidOperationException if not installed or incompatible. Get name from ID and throw ArgumentException if name could not be found.
 
 			throw new NotImplementedException( );
 		}
