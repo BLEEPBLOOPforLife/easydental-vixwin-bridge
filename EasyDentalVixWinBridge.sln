@@ -5,16 +5,24 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDentalVixWinBridge", "EasyDentalVixWinBridge\EasyDentalVixWinBridge.csproj", "{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}"
 EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "EasyDentalVixWinBridgeInstaller", "EasyDentalVixWinBridgeInstaller\EasyDentalVixWinBridgeInstaller.aiproj", "{174BE153-FB67-45E4-B550-785895710FAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}.All|Any CPU.Build.0 = Release|Any CPU
 		{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174BE153-FB67-45E4-B550-785895710FAD}.All|Any CPU.ActiveCfg = DefaultBuild
+		{174BE153-FB67-45E4-B550-785895710FAD}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{174BE153-FB67-45E4-B550-785895710FAD}.Release|Any CPU.ActiveCfg = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
