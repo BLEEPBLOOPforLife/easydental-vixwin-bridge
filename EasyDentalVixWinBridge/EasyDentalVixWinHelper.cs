@@ -21,6 +21,8 @@ namespace EasyDentalVixWinBridge
 		private const string selectPatientByIdQueryString = "\f_I@ICT p.PatID, p.LastName, p.FirstName, p.MI FROM PAT_DAT p WHERE p.PatID="; // \f_I@ICT = SELECT
 		private const string vixWinExeLocationRegistryKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\VixWin2000";
 		private const string vixWinExeLocationRegistryValueName = ""; // (Default) value name.
+		private static int currentPatientId;
+		private static Process currentVixWinInstance;
 
 		/// <summary>
 		/// Checks if Easy Dental is currently open.
@@ -132,6 +134,39 @@ namespace EasyDentalVixWinBridge
 		}
 
 		/// <summary>
+		/// Starts a watchdog that checks if the patient selection was changed in Easy Dental or if Easy Dental was closed.
+		/// </summary>
+		private static async void StartPatientChangeWatchdog( )
+		{
+			while ( true )
+			{
+				await Task.Delay( 1500 );
+
+				if ( currentVixWinInstance.HasExited )
+				{
+					return;
+				}
+
+				if ( !IsEasyDentalOpen( ) )
+				{
+					while ( !currentVixWinInstance.CloseMainWindow( ) ) // Keep trying to close VixWin until it closes.
+					{
+						await Task.Delay( 1500 );
+					}
+
+					return;
+				}
+
+				int newPatientId = GetEasyDentalSelectedPatientId( );
+
+				if ( currentPatientId != newPatientId )
+				{
+					OpenVixWinWithEasyDentalPatient( newPatientId );
+				}
+			}
+		}
+
+		/// <summary>
 		/// Opens VixWin with an Easy Dental patient ID. Throws an <see cref="InvalidOperationException" /> if Easy Dental or VixWin is not installed, an incompatible version of Easy Dental or VixWin is installed, or the Easy Dental database is down. Throws an <see cref="ArgumentException" /> if the patient ID does not represent a valid patient.
 		/// </summary>
 		/// <param name="patientId">The Easy Dental patient ID.</param>
@@ -140,7 +175,16 @@ namespace EasyDentalVixWinBridge
 		public static async void OpenVixWinWithEasyDentalPatient( int patientId )
 		{
 			string vixWinExePath = GetVixWinExePath( );
-			Process.Start( vixWinExePath, "-I " + patientId + " -N " + "\"" + await GetEasyDentalPatientNameFromIdAsync( patientId ) + "\"" );
+			Process vixWin = Process.Start( vixWinExePath, "-I " + patientId + " -N " + "\"" + await GetEasyDentalPatientNameFromIdAsync( patientId ) + "\"" );
+
+			if ( vixWin == null || vixWin.HasExited )
+			{
+				return;
+			}
+
+			currentPatientId = patientId;
+			currentVixWinInstance = vixWin;
+			StartPatientChangeWatchdog( );
 		}
 	}
 }
