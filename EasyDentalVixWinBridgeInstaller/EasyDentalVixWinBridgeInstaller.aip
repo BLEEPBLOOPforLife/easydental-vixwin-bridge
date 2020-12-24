@@ -174,8 +174,8 @@
     <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
-    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
-    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
     <ROW Shortcut="AI_PROPPATH_FILENAME_PERBUILD_Eas_1" Directory_="StartupFolder" Name="EASYDE~1.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_EasyDentalVixWinBridge.exe]" Component_="EasyDentalVixWinBridge_PrimaryOutput" Target="[#EasyDentalVixWinBridge.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="EasyDentalVixWinBridge_Dir"/>
