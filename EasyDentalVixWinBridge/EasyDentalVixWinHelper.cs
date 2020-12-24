@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Odbc;
 using System.Diagnostics;
 using System.Linq;
 
@@ -14,6 +15,8 @@ namespace EasyDentalVixWinBridge
 		private const string easyDentalProcessName = "Ezd.Shell";
 		private const string patientIdRegistryKeyPath = @"SOFTWARE\Easy Dental Systems, Inc.\Easy Dental\SELPAT";
 		private const string patientIdRegistryValueName = "CPID";
+		private const string odbcConnectionString = "DSN=EZD2011;DBQ=.;SERVER=NotTheServer";
+		private const string selectPatientByIdQueryString = "\f_I@ICT p.PatID, p.LastName, p.FirstName, p.MI FROM PAT_DAT p WHERE p.PatID="; // \f_I@ICT = SELECT
 		private const string vixWinExeLocationRegistryKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\VixWin2000";
 		private const string vixWinExeLocationRegistryValueName = ""; // (Default) value name.
 
@@ -58,13 +61,13 @@ namespace EasyDentalVixWinBridge
 		}
 
 		/// <summary>
-		/// Gets the name of the Easy Dental patient given a patient ID. Throws an <see cref="InvalidOperationException" /> if Easy Dental is not installed or an incompatible Easy Dental version is installed. Throws an <see cref="ArgumentException" /> if the patient ID does not represent a valid patient.
+		/// Gets the name of the Easy Dental patient given a patient ID. Throws an <see cref="InvalidOperationException" /> if Easy Dental is not installed, an incompatible version of Easy Dental is installed, or the database is down. Throws an <see cref="ArgumentException" /> if the patient ID does not represent a valid patient.
 		/// </summary>
 		/// <param name="patientId">The patient ID.</param>
 		/// <returns>
 		/// The name of the patient.
 		/// </returns>
-		/// <exception cref="InvalidOperationException">Easy Dental is not installed or an incompatible version of Easy Dental is installed.</exception>
+		/// <exception cref="InvalidOperationException">Easy Dental is not installed, an incompatible version of Easy Dental is installed, or the database is down.</exception>
 		/// <exception cref="ArgumentException">Invalid patient ID.</exception>
 		public static string GetEasyDentalPatientNameFromId( int patientId )
 		{
@@ -73,9 +76,35 @@ namespace EasyDentalVixWinBridge
 				throw new ArgumentException( "Invalid patient ID" );
 			}
 
-			// TODO: Check if EasyDental is installed and throw InvalidOperationException if not installed or incompatible. Get name from ID and throw ArgumentException if name could not be found.
+			try
+			{
+				using ( OdbcConnection testConnection = new OdbcConnection( odbcConnectionString ) )
+				{
+					OdbcCommand command = new OdbcCommand( selectPatientByIdQueryString + patientId, testConnection );
+					testConnection.Open( );
 
-			throw new NotImplementedException( );
+					using ( OdbcDataReader dataReader = command.ExecuteReader( ) )
+					{
+						dataReader.Read( );
+
+						if ( !dataReader.HasRows )
+						{
+							throw new ArgumentException( "Invalid patient ID" );
+						}
+
+						string lastName = ( string ) dataReader[ 1 ];
+						string firstName = ( string ) dataReader[ 2 ];
+						string middleInitial = ( string ) ( dataReader[ 3 ] == DBNull.Value ? string.Empty : dataReader[ 3 ] );
+						string fullName = lastName + ", " + firstName + " " + middleInitial;
+						fullName = fullName.Trim( ); // Middle initial is optional, so trim away last space if there is no middle initial.
+
+						return fullName;
+					}
+				}
+			} catch ( Exception )
+			{
+				throw new InvalidOperationException( "Easy Dental is not installed, an incompatible version of Easy Dental is installed, or the database is down" );
+			}
 		}
 
 		/// <summary>
@@ -101,10 +130,10 @@ namespace EasyDentalVixWinBridge
 		}
 
 		/// <summary>
-		/// Opens VixWin with an Easy Dental patient ID. Throws an <see cref="InvalidOperationException" /> if Easy Dental or VixWin is not installed or an incompatible version of Easy Dental or VixWin is installed. Throws an <see cref="ArgumentException" /> if the patient ID does not represent a valid patient.
+		/// Opens VixWin with an Easy Dental patient ID. Throws an <see cref="InvalidOperationException" /> if Easy Dental or VixWin is not installed, an incompatible version of Easy Dental or VixWin is installed, or the Easy Dental database is down. Throws an <see cref="ArgumentException" /> if the patient ID does not represent a valid patient.
 		/// </summary>
 		/// <param name="patientId">The Easy Dental patient ID.</param>
-		/// <exception cref="InvalidOperationException">Easy Dental or VixWin is not installed or an incompatible version of Easy Dental or VixWin is installed.</exception>
+		/// <exception cref="InvalidOperationException">Easy Dental or VixWin is not installed, an incompatible version of Easy Dental or VixWin is installed, or the Easy Dental database is down.</exception>
 		/// <exception cref="ArgumentException">Invalid patient ID.</exception>
 		public static void OpenVixWinWithEasyDentalPatient( int patientId )
 		{
