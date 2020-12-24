@@ -20,8 +20,9 @@ namespace EasyDentalVixWinBridge
 			notifyIcon.Icon = new Icon( AppDomain.CurrentDomain.BaseDirectory + "tray_icon.ico" );
 			notifyIcon.Text = "Easy Dental VixWin Bridge";
 			notifyIcon.ContextMenuStrip = new ContextMenuStrip( );
-			notifyIcon.Visible = true;
+			notifyIcon.ContextMenuStrip.RenderMode = ToolStripRenderMode.System;
 			PopulateTrayIconMenu( );
+			notifyIcon.Visible = true;
 		}
 
 		/// <summary>
@@ -91,6 +92,7 @@ namespace EasyDentalVixWinBridge
 			} catch ( InvalidOperationException e )
 			{
 				MessageBox.Show( e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error ); // Easy Dental is not installed or an incompatible version is installed.
+				notifyIcon.ContextMenuStrip.BringToFront( );
 			}
 
 			notifyIcon.ContextMenuStrip.Items[ 2 ].Text = "Selected Patient Name: " + selectedPatientName;
