@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Data.Common;
 using System.Data.Odbc;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Microsoft.Win32;
 
@@ -69,7 +71,7 @@ namespace EasyDentalVixWinBridge
 		/// </returns>
 		/// <exception cref="InvalidOperationException">Easy Dental is not installed, an incompatible version of Easy Dental is installed, or the database is down.</exception>
 		/// <exception cref="ArgumentException">Invalid patient ID.</exception>
-		public static string GetEasyDentalPatientNameFromId( int patientId )
+		public static async Task<string> GetEasyDentalPatientNameFromIdAsync( int patientId )
 		{
 			if ( patientId == 0 ) // Common case check.
 			{
@@ -81,11 +83,11 @@ namespace EasyDentalVixWinBridge
 				using ( OdbcConnection testConnection = new OdbcConnection( odbcConnectionString ) )
 				{
 					OdbcCommand command = new OdbcCommand( selectPatientByIdQueryString + patientId, testConnection );
-					testConnection.Open( );
+					await testConnection.OpenAsync( );
 
-					using ( OdbcDataReader dataReader = command.ExecuteReader( ) )
+					using ( DbDataReader dataReader = await command.ExecuteReaderAsync( ) )
 					{
-						dataReader.Read( );
+						await dataReader.ReadAsync( );
 
 						if ( !dataReader.HasRows )
 						{
@@ -135,10 +137,10 @@ namespace EasyDentalVixWinBridge
 		/// <param name="patientId">The Easy Dental patient ID.</param>
 		/// <exception cref="InvalidOperationException">Easy Dental or VixWin is not installed, an incompatible version of Easy Dental or VixWin is installed, or the Easy Dental database is down.</exception>
 		/// <exception cref="ArgumentException">Invalid patient ID.</exception>
-		public static void OpenVixWinWithEasyDentalPatient( int patientId )
+		public static async void OpenVixWinWithEasyDentalPatient( int patientId )
 		{
 			string vixWinExePath = GetVixWinExePath( );
-			Process.Start( vixWinExePath, "-I " + patientId + " -N " + "\"" + GetEasyDentalPatientNameFromId( patientId ) + "\"" );
+			Process.Start( vixWinExePath, "-I " + patientId + " -N " + "\"" + await GetEasyDentalPatientNameFromIdAsync( patientId ) + "\"" );
 		}
 	}
 }

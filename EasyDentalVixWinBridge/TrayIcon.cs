@@ -74,7 +74,7 @@ namespace EasyDentalVixWinBridge
 		/// <summary>
 		/// Updates the current patient in the tray icon menu.
 		/// </summary>
-		private void UpdateCurrentPatientInUi( )
+		private async void UpdateCurrentPatientInUi( )
 		{
 			string selectedPatientName = "None";
 			string selectedPatientId = "None";
@@ -85,7 +85,7 @@ namespace EasyDentalVixWinBridge
 
 				if ( patientId != 0 )
 				{
-					selectedPatientName = EasyDentalVixWinHelper.GetEasyDentalPatientNameFromId( patientId );
+					selectedPatientName = await EasyDentalVixWinHelper.GetEasyDentalPatientNameFromIdAsync( patientId );
 					selectedPatientId = patientId.ToString( );
 				}
 			} catch ( InvalidOperationException e )
