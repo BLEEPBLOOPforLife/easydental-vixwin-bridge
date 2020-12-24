@@ -171,7 +171,7 @@ namespace EasyDentalVixWinBridge
 
 				if ( currentPatientId != newPatientId )
 				{
-					OpenVixWinWithEasyDentalPatient( newPatientId );
+					OpenVixWinWithEasyDentalPatient( newPatientId, true );
 				}
 			}
 		}
@@ -180,9 +180,10 @@ namespace EasyDentalVixWinBridge
 		/// Opens VixWin with an Easy Dental patient ID. Throws an <see cref="InvalidOperationException" /> if Easy Dental or VixWin is not installed, an incompatible version of Easy Dental or VixWin is installed, or the Easy Dental database is down. Throws an <see cref="ArgumentException" /> if the patient ID does not represent a valid patient.
 		/// </summary>
 		/// <param name="patientId">The Easy Dental patient ID.</param>
+		/// <param name="openNewPatientInSameWindow">Whether the caller is opening a new patient in the same VixWin window.</param>
 		/// <exception cref="InvalidOperationException">Easy Dental or VixWin is not installed, an incompatible version of Easy Dental or VixWin is installed, or the Easy Dental database is down.</exception>
 		/// <exception cref="ArgumentException">Invalid patient ID.</exception>
-		public static async void OpenVixWinWithEasyDentalPatient( int patientId )
+		public static async void OpenVixWinWithEasyDentalPatient( int patientId, bool openNewPatientInSameWindow = false )
 		{
 			string vixWinExePath = GetVixWinExePath( );
 			Process vixWin = Process.Start( vixWinExePath, "-I " + patientId + " -N " + "\"" + await GetEasyDentalPatientNameFromIdAsync( patientId ) + "\"" );
@@ -193,8 +194,12 @@ namespace EasyDentalVixWinBridge
 			}
 
 			currentPatientId = patientId;
-			currentVixWinInstance = vixWin;
-			StartPatientChangeWatchdog( );
+
+			if ( !openNewPatientInSameWindow ) // Don't change VixWin instance or start new watchdog if we are opening another patient in the same window.
+			{
+				currentVixWinInstance = vixWin;
+				StartPatientChangeWatchdog( );
+			}
 		}
 	}
 }
