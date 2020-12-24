@@ -94,7 +94,7 @@ namespace EasyDentalVixWinBridge
 
 						string lastName = ( string ) dataReader[ 1 ];
 						string firstName = ( string ) dataReader[ 2 ];
-						string middleInitial = ( string ) ( dataReader[ 3 ] == DBNull.Value ? string.Empty : dataReader[ 3 ] );
+						string middleInitial = ( string ) ( dataReader[ 3 ] == DBNull.Value ? "" : dataReader[ 3 ] );
 						string fullName = lastName + ", " + firstName + " " + middleInitial;
 						fullName = fullName.Trim( ); // Middle initial is optional, so trim away last space if there is no middle initial.
 
