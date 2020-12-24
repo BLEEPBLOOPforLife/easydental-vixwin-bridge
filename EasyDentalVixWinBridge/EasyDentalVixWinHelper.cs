@@ -159,6 +159,16 @@ namespace EasyDentalVixWinBridge
 
 				int newPatientId = GetEasyDentalSelectedPatientId( );
 
+				if ( newPatientId == 0 )
+				{
+					while ( !currentVixWinInstance.CloseMainWindow( ) ) // Keep trying to close VixWin until it closes.
+					{
+						await Task.Delay( 1500 );
+					}
+
+					return;
+				}
+
 				if ( currentPatientId != newPatientId )
 				{
 					OpenVixWinWithEasyDentalPatient( newPatientId );
