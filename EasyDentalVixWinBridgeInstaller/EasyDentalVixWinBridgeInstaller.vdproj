@@ -13,6 +13,12 @@
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_4FF48445DB5A4254B90212FE9E429AD7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -77,6 +83,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_FE33EECCC6D84505A02EF424CCA5EA56"
+            {
+            "Name" = "8:Primary output from EasyDentalVixWinBridge (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_4FF48445DB5A4254B90212FE9E429AD7"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_6CD45165_6024_44AE_82A7_1F432A75B9F2"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -88,6 +108,14 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_E8CFE55EB57C4F13865C262A8A36282E"
+                {
+                "Name" = "8:.NET Framework 4.5"
+                "Message" = "8:[VSDNETMSG]"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:https://www.microsoft.com/en-us/download/confirmation.aspx?id=30653"
+                }
             }
         }
         "File"
@@ -121,6 +149,17 @@
                 {
                 }
             }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_6C66A5AA0A634124A5C7358D5E5B79C3"
+            {
+            "Name" = "8:#1928"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:StartupFolder"
+                "Folders"
+                {
+                }
+            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_BE9BC554E4CC485BAA40DCB962877729"
             {
             "Name" = "8:#1919"
@@ -149,7 +188,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Easy Dental VixWin Bridge"
         "ProductCode" = "8:{05F51C98-5777-4A1B-8B31-7FA61EE2E778}"
-        "PackageCode" = "8:{0E5FD97B-679F-4998-8318-4596FE77FA46}"
+        "PackageCode" = "8:{6F118A42-4A33-4AC3-869E-A0CD0863DDC6}"
         "UpgradeCode" = "8:{1A5AFE47-0A53-4B4A-B63D-470BA03F9A79}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -269,6 +308,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B5070AF18E9C4CAC936DAAE6C6CF66E6"
+            {
+            "Name" = "8:EasyDentalVixWinBridge.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_4FF48445DB5A4254B90212FE9E429AD7"
+            "Folder" = "8:_6C66A5AA0A634124A5C7358D5E5B79C3"
+            "WorkingFolder" = "8:_316816B7EB4D4EAAA23722596F2A3551"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -668,6 +721,35 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4FF48445DB5A4254B90212FE9E429AD7"
+            {
+            "SourcePath" = "8:..\\EasyDentalVixWinBridge\\obj\\Release\\net45\\EasyDentalVixWinBridge.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_316816B7EB4D4EAAA23722596F2A3551"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{AAD60B09-1E26-4CE7-87AE-F8DBA2579708}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                "ExcludeFilter" = "8:*.exe"
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_608DE2883F2149368EC1305F4E5477F4"
             {
             "SourcePath" = "8:"
