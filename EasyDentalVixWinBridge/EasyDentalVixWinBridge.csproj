@@ -11,6 +11,7 @@
 		<ApplicationIcon>tray_icon.ico</ApplicationIcon>
 		<PackageId>EasyDentalVixWinBridge</PackageId>
 		<Description>Easy Dental VixWin Bridge</Description>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
