@@ -15,7 +15,7 @@ namespace EasyDentalVixWinBridge
 		[STAThread]
 		internal static void Main( )
 		{
-			using ( Mutex appMutex = new Mutex( false, "Global\\{bce94a11-cb8f-41b5-a0b4-3cd8e10628cd}" ) )
+			using ( Mutex appMutex = new Mutex( false, "Global\\{bce94a11-cb8f-41b5-a0b4-3cd8e10628cd}" + Environment.UserName ) )
 			{
 				if ( !appMutex.WaitOne( 0, false ) )
 				{
