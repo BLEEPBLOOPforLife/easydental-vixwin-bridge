@@ -19,7 +19,7 @@ namespace EasyDentalVixWinBridge
 			{
 				if ( !appMutex.WaitOne( 0, false ) )
 				{
-					MessageBox.Show( "Application is already running.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+					TrayIcon.OpenVixWinWithPatient( );
 
 					return;
 				}
