@@ -42,7 +42,7 @@ namespace EasyDentalVixWinBridge
 			{
 				if ( eventArgs.Button == MouseButtons.Left )
 				{
-					OpenVixWinWithPatientFromUi( );
+					OpenVixWinWithPatient( );
 				} else if ( eventArgs.Button == MouseButtons.Right )
 				{
 					UpdateCurrentPatientInUi( );
@@ -51,9 +51,9 @@ namespace EasyDentalVixWinBridge
 		}
 
 		/// <summary>
-		/// Opens VixWin with an Easy Dental patient ID from the UI.
+		/// Opens VixWin with an Easy Dental patient ID.
 		/// </summary>
-		private void OpenVixWinWithPatientFromUi( )
+		internal static void OpenVixWinWithPatient( )
 		{
 			try
 			{
