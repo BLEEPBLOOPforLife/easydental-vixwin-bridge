@@ -7,11 +7,11 @@
 		<Authors>Brian Mak</Authors>
 		<Company />
 		<Product>Easy Dental VixWin Bridge</Product>
-		<Copyright>Copyright (c) 2020 Brian Mak. All rights reserved.</Copyright>
+		<Copyright>Copyright (c) 2021 Brian Mak. All rights reserved.</Copyright>
 		<ApplicationIcon>tray_icon.ico</ApplicationIcon>
 		<PackageId>EasyDentalVixWinBridge</PackageId>
 		<Description>Easy Dental VixWin Bridge</Description>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
