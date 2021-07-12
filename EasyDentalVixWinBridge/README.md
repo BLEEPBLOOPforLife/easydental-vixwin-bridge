@@ -3,7 +3,7 @@ A program used to integrate Easy Dental with VixWin better. The current VxLink v
 
 ## Download
 
-To download binaries for this program, go [here](https://github.com/BLEEPBLOOPforLife/easydental-vixwin-bridge/releases).
+To download binaries for this program, go [here](https://github.com/eggroll-bot/easydental-vixwin-bridge/releases).
 
 ## Install Instructions
 

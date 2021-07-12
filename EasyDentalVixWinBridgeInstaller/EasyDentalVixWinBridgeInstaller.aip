@@ -16,10 +16,10 @@
     <ROW Property="AI_REQUIRED_DOTNET_VERSION" MultiBuildValue="DefaultBuild:4.5" ValueLocId="-"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
-    <ROW Property="ARPHELPLINK" Value="https://github.com/BLEEPBLOOPforLife/easydental-vixwin-bridge"/>
+    <ROW Property="ARPHELPLINK" Value="https://github.com/eggroll-bot/easydental-vixwin-bridge"/>
     <ROW Property="ARPNOMODIFY" MultiBuildValue="DefaultBuild:1"/>
-    <ROW Property="ARPURLINFOABOUT" Value="https://github.com/BLEEPBLOOPforLife/easydental-vixwin-bridge"/>
-    <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/BLEEPBLOOPforLife/easydental-vixwin-bridge"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://github.com/eggroll-bot/easydental-vixwin-bridge"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/eggroll-bot/easydental-vixwin-bridge"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="MSIFASTINSTALL" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Brian Mak"/>
